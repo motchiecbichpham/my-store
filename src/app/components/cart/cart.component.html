@@ -1,0 +1,71 @@
+<app-header></app-header>
+<form class="form-margin">
+  <div class="cart-container">
+    <div class="cart-panel">
+      <div class="cart-item" *ngFor="let product of products">
+        <div class="cart-item">
+          <img class="img" src="{{ product.url }}" />
+          <div class="cart-item-details">
+            <p>{{ product.name }}</p>
+            <p>${{ product.price }}</p>
+            <label for="amount">Amount</label>
+            <input
+              min="1"
+              class="number-input"
+              type="number"
+              id="amount"
+              name="amount"
+              value="{{ 0 }}"
+              [(ngModel)]="product.quantity"
+              (ngModelChange)="updatePrice(product)"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cart-panel">
+      <form class="form-margin" #form="ngForm">
+        <label for="name">Full name:</label>
+        <br /><br />
+        <input
+          type="text"
+          id="name"
+          name="name"
+          required
+          minlength="3"
+          [(ngModel)]="name"
+        />
+        <br /><br />
+        <label for="address">Address:</label>
+        <br /><br />
+        <input
+          type="text"
+          id="address"
+          name="address"
+          required
+          minlength="6"
+          [(ngModel)]="address"
+        />
+        <br /><br />
+        <label for="credit">Credit card:</label>
+        <br /><br />
+        <input
+          type="text"
+          name="ccNum"
+          id="ccNum"
+          required
+          minlength="16"
+          maxlength="16"
+          inputmode="numeric"
+          pattern="^[0-9]*$"
+          [(ngModel)]="credit"
+        />
+        <br /><br />
+        <form>
+          <h2 id="totalPrice">Total: ${{ totalPrice.toFixed(2) }}</h2>
+        </form>
+        <button [disabled]="form.invalid">Submit</button>
+      </form>
+    </div>
+  </div>
+</form>

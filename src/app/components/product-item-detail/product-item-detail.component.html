@@ -1,0 +1,20 @@
+<app-header></app-header>
+<div class="detail-container">
+  <img class="product-image" src="{{ product.url }}" />
+  <form class="detail-item" (ngSubmit)="submit(product)">
+    <h3> {{product.name}} </h3>
+    <h3> {{product.price}} </h3>
+    <p> {{product.description}} </p>
+    <select
+      class="select-input"
+      name="{{ product.id }}">
+      <option *ngFor="let num of [1,2,3]" >
+        {{ num }}
+      </option>
+    </select>
+    <br>
+    <button type="submit">Add to cart</button>
+    <br>
+    <a routerLink="/" class="back-link">&larr; Back to product list</a>
+  </form>
+</div>
