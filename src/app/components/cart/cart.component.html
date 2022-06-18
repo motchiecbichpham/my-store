@@ -1,4 +1,11 @@
 <app-header></app-header>
+<div
+  class="empty-cart-message"
+  *ngIf="products.length == 0; else elseBlock"
+>
+  <h1>No products in cart</h1>
+</div>
+<ng-template #elseBlock>
 <form class="form-margin">
   <div class="cart-container">
     <div class="cart-panel">
@@ -10,7 +17,6 @@
             <p>${{ product.price }}</p>
             <label for="amount">Amount</label>
             <input
-              min="1"
               class="number-input"
               type="number"
               id="amount"
@@ -24,7 +30,7 @@
       </div>
     </div>
     <div class="cart-panel">
-      <form class="form-margin" #form="ngForm">
+      <form class="form-margin" #form="ngForm" (ngSubmit)="onSubmit()">
         <label for="name">Full name:</label>
         <br /><br />
         <input
@@ -64,8 +70,9 @@
         <form>
           <h2 id="totalPrice">Total: ${{ totalPrice.toFixed(2) }}</h2>
         </form>
-        <button [disabled]="form.invalid">Submit</button>
+        <button class="button" [disabled]="form.invalid">Submit</button>
       </form>
     </div>
   </div>
 </form>
+</ng-template>

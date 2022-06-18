@@ -4,15 +4,11 @@
   </a>
   <p>{{ product.name }}</p>
   <p>${{ product.price }}</p>
-  <select
-  [(ngModel)]="quantity"
-    class="select-input"
-    name="{{ product.id }}"
-  >
-    <option *ngFor="let num of [1,2,3]" >
+  <select [(ngModel)]="quantity" class="select-input" name="{{ product.id }}">
+    <option *ngFor="let num of [1, 2, 3, 4, 5]">
       {{ num }}
     </option>
   </select>
 
-  <button type="submit">Add to cart</button>
+  <button class="button" type="submit">Add to cart</button>
 </form>

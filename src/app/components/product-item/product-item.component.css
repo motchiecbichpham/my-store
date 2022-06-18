@@ -19,3 +19,15 @@
   width: 108px;
   margin-bottom: 8px;
 }
+
+.button {
+  background-color: #008CBA;
+  border: none;
+  color: white;
+  padding: 8px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 12px;
+}

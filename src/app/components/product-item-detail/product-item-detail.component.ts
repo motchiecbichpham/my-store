@@ -39,10 +39,10 @@ export class ProductItemDetailComponent implements OnInit {
     }
   }
   submit(item: Product): void {
-    item.quantity = this.quantity;
+    item.quantity = Number(this.quantity);
     this.addProduct.emit(item);
-    this.cartService.addProduct(item);
     alert(`Added to cart: ${item.quantity} x ${this.product.name}`);
+    this.cartService.addProduct(item);
     this.quantity = 1;
   }
 }

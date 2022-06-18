@@ -15,6 +15,8 @@ export class CartService {
   constructor() {}
 
   addProduct(product: Product) {
+    console.log(product);
+
     const exitedProduct = this.productsInCart.find(
       (item) => item.id === product.id
     );
@@ -30,5 +32,12 @@ export class CartService {
   }
   setProductsInCart(products: Product[]) {
     this.productsInCart = products;
+  }
+  getOrder(): Order {
+    return this.order;
+  }
+  setOrder(order: Order) {
+    this.order = order;
+    this.productsInCart = [];
   }
 }
