@@ -1,78 +1,79 @@
 <app-header></app-header>
-<div
-  class="empty-cart-message"
-  *ngIf="products.length == 0; else elseBlock"
->
+<div class="empty-cart-message" *ngIf="products.length == 0; else elseBlock">
   <h1>No products in cart</h1>
 </div>
 <ng-template #elseBlock>
-<form class="form-margin">
-  <div class="cart-container">
-    <div class="cart-panel">
-      <div class="cart-item" *ngFor="let product of products">
-        <div class="cart-item">
-          <img class="img" src="{{ product.url }}" />
-          <div class="cart-item-details">
-            <p>{{ product.name }}</p>
-            <p>${{ product.price }}</p>
-            <label for="amount">Amount</label>
-            <input
-              class="number-input"
-              type="number"
-              name="{{ product.id }}"
-              min="0"
-              value="{{ product.quantity }}"
-              [(ngModel)]="product.quantity"
-              (ngModelChange)="updatePrice(product)"
-            />
+  <form class="form-margin">
+    <div class="cart-container">
+      <div class="cart-panel">
+        <div class="cart-item" *ngFor="let product of products">
+          <div class="cart-item">
+            <img class="img" src="{{ product.url }}" />
+            <div class="cart-item-details">
+              <p>{{ product.name }}</p>
+              <p>${{ product.price }}</p>
+              <label for="amount">Amount</label>
+              <input
+                class="number-input"
+                type="number"
+                name="{{ product.id }}"
+                min="0"
+                value="{{ product.quantity }}"
+                [(ngModel)]="product.quantity"
+                (ngModelChange)="updatePrice(product)"
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="cart-panel">
-      <form class="form-margin" #form="ngForm" (ngSubmit)="onSubmit()">
-        <label for="name">Full name:</label>
-        <br /><br />
-        <input
-          type="text"
-          id="name"
-          name="name"
-          required
-          minlength="3"
-          [(ngModel)]="name"
-        />
-        <br /><br />
-        <label for="address">Address:</label>
-        <br /><br />
-        <input
-          type="text"
-          id="address"
-          name="address"
-          required
-          minlength="6"
-          [(ngModel)]="address"
-        />
-        <br /><br />
-        <label for="credit">Credit card:</label>
-        <br /><br />
-        <input
-          type="number"
-          name="credit"
-          id="credit"
-          required
-          minlength="16"
-          maxlength="16"
-          inputmode="numeric"
-          pattern="^[0-9]*$"
-          [(ngModel)]="credit"
-        />
-        <br /><br />
-        <form>
-          <h2 id="totalPrice">Total: ${{ totalPrice.toFixed(2) }}</h2>
+      <div class="cart-panel">
+        <form class="form-margin" #form="ngForm" (ngSubmit)="onSubmit()">
+          <label for="name">Full name:</label>
+          <br /><br />
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            minlength="3"
+            placeholder="(Minimum 3 Characters)"
+            [(ngModel)]="name"
+          />
+          <br /><br />
+          <label for="address">Address:</label>
+          <br /><br />
+          <input
+            placeholder="(Minimum 6 Characters)"
+            type="text"
+            id="address"
+            name="address"
+            required
+            minlength="6"
+            [(ngModel)]="address"
+            class="form-control"
+          />
+          <br /><br />
+          <label for="credit">Credit card:</label>
+          <br /><br />
+          <input
+            type="number"
+            name="credit"
+            id="credit"
+            required
+            min="1000000000000000"
+            max="9999999999999999"
+            inputmode="numeric"
+            placeholder="(16 Digit Number)"
+            pattern="^\d+$"
+            [(ngModel)]="credit"
+          />
+          <br /><br />
+          <form>
+            <h2 id="totalPrice">Total: ${{ totalPrice.toFixed(2) }}</h2>
+          </form>
+          <button [disabled]="form.invalid">Submit</button>
         </form>
-        <button class="button" [disabled]="form.invalid">Submit</button>
-      </form>
+      </div>
     </div>
-  </div>
-</form>
+  </form>
 </ng-template>
