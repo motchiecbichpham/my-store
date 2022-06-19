@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
+import { ProductService } from 'src/app/services/product.service';
 import { Order } from 'src/app/types/order';
 import { Product } from 'src/app/types/product';
 
@@ -22,6 +23,8 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.products = this.cartService.getProductsInCart();
+    console.log(this.products, 'get list');
+
     this.updatePrice();
   }
   updatePrice(product?: Product) {

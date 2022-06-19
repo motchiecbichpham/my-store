@@ -19,9 +19,9 @@
             <input
               class="number-input"
               type="number"
-              id="amount"
-              name="amount"
-              value="{{ 0 }}"
+              name="{{ product.id }}"
+              min="0"
+              value="{{ product.quantity }}"
               [(ngModel)]="product.quantity"
               (ngModelChange)="updatePrice(product)"
             />
@@ -56,9 +56,9 @@
         <label for="credit">Credit card:</label>
         <br /><br />
         <input
-          type="text"
-          name="ccNum"
-          id="ccNum"
+          type="number"
+          name="credit"
+          id="credit"
           required
           minlength="16"
           maxlength="16"

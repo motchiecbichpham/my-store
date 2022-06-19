@@ -15,7 +15,7 @@ export class CartService {
   constructor() {}
 
   addProduct(product: Product) {
-    console.log(product);
+    console.log(product, 'check');
 
     const exitedProduct = this.productsInCart.find(
       (item) => item.id === product.id
@@ -25,6 +25,7 @@ export class CartService {
     } else {
       this.productsInCart.push(product);
     }
+    console.log(this.productsInCart);
   }
 
   getProductsInCart(): Product[] {

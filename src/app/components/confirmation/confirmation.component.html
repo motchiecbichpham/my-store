@@ -1,7 +1,7 @@
 <app-header></app-header>
 <div
   class="confirmation-container"
-  *ngIf="order; else elseBlock"
+  *ngIf="!order; else elseBlock"
 >
   <h1>No info of order</h1>
 </div>
